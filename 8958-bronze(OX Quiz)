@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+	int n;
+	char answer[80];
+	int count = 0;
+	int sum = 0;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%s", answer);
+		int len = strlen(answer);
+		for (int k = 0; k < len; k++)
+		{
+			if (answer[k] == 'O')
+			{
+				count++;
+				sum += count;
+			}
+			else if (answer[k] == 'X')
+				count = 0;
+		}
+		printf("%d\n", sum);
+		count = 0;
+		sum = 0;
+	}
+	return 0;
+}//O나오면 count++       X나오면 count = 0 
+//한 다음 sum에 count 더하기.
