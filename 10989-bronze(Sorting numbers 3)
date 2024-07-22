@@ -47,21 +47,21 @@ solution
 int main()
 {
 	int n, a;
-	int su[10001] = { 0, };
+	int num[10001] = { 0, };
 
 	scanf("%d", &n);
 
 	for (int i = 0; i < n; i++)             //입력을 받은 수 위치에 있는 것을 1증가시킴
 	{
 		scanf("%d", &a);
-		su[a]++;
+		num[a]++;
 	}
 
 	for (int i = 0; i < 10001; i++)         //10001개의 배열을 확인함.
 	{
-		if (su[i] >= 1)
+		if (num[i] >= 1)
 		{
-			for (int j = 0; j < su[i]; j++)
+			for (int j = 0; j < num[i]; j++)
 			{
 				printf("%d\n", i);
 			}
