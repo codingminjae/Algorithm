@@ -1,0 +1,69 @@
+좌표 정렬하기 성공
+시간 제한	메모리 제한	제출	정답	맞힌 사람	정답 비율
+1 초	256 MB	149545	72054	56087	48.198%
+문제
+2차원 평면 위의 점 N개가 주어진다. 좌표를 x좌표가 증가하는 순으로, x좌표가 같으면 y좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.
+
+출력
+첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
+
+예제 입력 1 
+5
+3 4
+1 1
+1 -1
+2 2
+3 3
+예제 출력 1 
+1 -1
+1 1
+2 2
+3 3
+3 4
+
+solution
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct { //x랑 y가 따로 놀면 안되니깐 구조체로 묶기!
+	int x, y;
+} set;
+set arr[100001];
+
+int compare(const void* a, const void* b) {  //qsort에 쓸 compare 함수
+	set A = *(set*)a;
+	set B = *(set*)b;
+
+	if (A.x < B.x) {
+		return -1;
+	}
+	else if (A.x == B.x) {
+		if (A.y < B.y) {
+			return -1;
+		}
+		else
+			return 1;
+	}
+	else
+		return 1;
+}
+
+int main() {      //메인 함수
+	int n;
+	scanf("%d", &n);   //점의 개수 입력 받기
+	for (int i = 0; i < n; i++) {
+		scanf("%d%d", &arr[i].x, &arr[i].y); // 점의 좌표들 입력 받기
+	}
+	
+	qsort(arr, n, sizeof(set), compare);  // 정렬
+
+	for (int i = 0; i < n; i++) {
+		printf("%d %d\n", arr[i].x, arr[i].y); //출력
+	}
+
+	return 0;
+}
