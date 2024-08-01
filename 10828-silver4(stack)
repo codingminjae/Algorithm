@@ -81,7 +81,7 @@ solution
 #define STACK_LEN	10001
 typedef int Data;
 
-typedef struct _arratStack {
+typedef struct _arrayStack {
 	Data stackArr[STACK_LEN];
 	int topIndex;
 	int size;
